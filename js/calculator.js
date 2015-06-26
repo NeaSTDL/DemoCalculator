@@ -30,9 +30,11 @@
 	function onNumberClick(){
 		switch(CalcApp.State){
 			case "INIT":
-				var value = $(".input").html();
-				$(".input").html($(this).html());
-				CalcApp.State = "FIRST_NUMBER";
+				var value = $(this).html();
+				if (value != "0"){
+					$(".input").html($(this).html());
+					CalcApp.State = "FIRST_NUMBER";	
+				}
 				break;
 			case "FIRST_NUMBER":
 				var value = $(".input").html();
@@ -92,7 +94,7 @@
 		var Values = Regex.exec($(".input").html());
 		console.log(Values);
 		switch(Values[2]){
-			case "+":
+			case "+": 
 				return (parseFloat(Values[1]) + parseFloat(Values[3])).toFixed(1);
 			case "-":
 				return (parseFloat(Values[1]) - parseFloat(Values[3])).toFixed(1);
